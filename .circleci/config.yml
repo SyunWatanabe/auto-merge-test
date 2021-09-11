@@ -1,12 +1,6 @@
 version: 2
 jobs:
   build:
-    steps:
-      - run:
-          name: The First Step
-          command: |
-            echo 'Hello World!'
-            echo 'This is the delivery pipeline'
     # snip
   continuous_bundle_update:
     docker:
@@ -45,7 +39,7 @@ workflows:
   nightly:
     triggers:
       - schedule:
-          cron: "* */1 * * *" # 毎時0分で1h毎
+          cron: "* */1 * * *"
           filters:
             branches:
               only: master
