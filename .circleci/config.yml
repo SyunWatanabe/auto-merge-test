@@ -45,9 +45,9 @@ workflows:
   nightly:
     triggers:
       - schedule:
-          cron: "00 7 * * 6"
+          cron: "*/5 * * * *"
           filters:
             branches:
               only: master
     jobs:
-      - continuous_bundle_update
+      - build
