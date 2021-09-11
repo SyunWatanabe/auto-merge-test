@@ -1,15 +1,53 @@
-version: 2.1
-orbs:
-  ruby: circleci/ruby@0.1.2 
-
+version: 2
 jobs:
   build:
-    docker:
-      - image: circleci/ruby:2.6.3-stretch-node
-    executor: ruby/default
     steps:
-      - checkout
       - run:
-          name: Which bundler?
-          command: bundle -v
-      - ruby/bundle-install
+          name: The First Step
+          command: |
+            echo 'Hello World!'
+            echo 'This is the delivery pipeline'
+    # snip
+  continuous_bundle_update:
+    docker:
+      - image: ruby:3.0.1-alpine
+    working_directory: /work
+    steps:
+      - run:
+          name: Install System Dependencies
+          command: |
+            # See also https://circleci.com/docs/2.0/custom-images/#required-tools-for-primary-containers
+            apk add --update --no-cache git openssh-client tar gzip ca-certificates \
+              tzdata
+            gem install -N bundler
+      - run:
+          name: Set timezone to Asia/Tokyo
+          command: cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+      - checkout
+      - restore_cache:
+          name: Restore bundler cache
+          keys:
+            - gems-{{ .Environment.COMMON_CACHE_KEY }}-{{ checksum "Gemfile.lock" }}
+            - gems-{{ .Environment.COMMON_CACHE_KEY }}-
+      - run:
+          name: Setup requirements for continuous bundle update
+          command: gem install -N circleci-bundle-update-pr
+      - deploy:
+          name: Continuous bundle update
+          command: circleci-bundle-update-pr <username> <email>
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build:
+          # snip
+  nightly:
+    triggers:
+      - schedule:
+          cron: "* */1 * * *" # 毎時0分で1h毎
+          filters:
+            branches:
+              only: master
+    jobs:
+      - continuous_bundle_update
