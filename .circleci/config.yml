@@ -11,6 +11,7 @@ jobs:
             echo 'This is the delivery pipeline'
   continuous_bundle_update:
     docker:
+      - image: alpine:3.7
       - image: ruby:2.6.6
     working_directory: /work
     steps:
