@@ -17,7 +17,6 @@ jobs:
       - run:
           name: Install System Dependencies
           command: |
-              tzdata
             gem install -N bundler
       - run:
           name: Set timezone to Asia/Tokyo
