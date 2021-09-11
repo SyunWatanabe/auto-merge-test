@@ -32,19 +32,19 @@ jobs:
           command: gem install -N circleci-bundle-update-pr
       - deploy:
           name: Continuous bundle update
-          command: circleci-bundle-update-pr $GIT_USER_NAME $GIT_USER_EMAIL
+          command: circleci-bundle-update-pr ${GIT_USER_NAME} ${GIT_USER_EMAIL}
 
 workflows:
   version: 2
   build:
     jobs:
       - build
-  nightly:
-    triggers:
-      - schedule:
-          cron: "0,50, * * * *"
-          filters:
-            branches:
-              only: master
-    jobs:
-      - continuous_bundle_update
+  # nightly:
+  #   triggers:
+  #     - schedule:
+  #         cron: "0,50, * * * *"
+  #         filters:
+  #           branches:
+  #             only: master
+  #   jobs:
+  #     - continuous_bundle_update
