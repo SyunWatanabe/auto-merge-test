@@ -38,11 +38,11 @@ workflows:
   version: 2
   build:
     jobs:
-      - continuous_bundle_update
+      - build
   nightly:
     triggers:
       - schedule:
-          cron: "20,25,30 * * * *"
+          cron: "0,50, * * * *"
           filters:
             branches:
               only: master
