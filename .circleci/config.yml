@@ -11,15 +11,12 @@ jobs:
             echo 'This is the delivery pipeline'
   continuous_bundle_update:
     docker:
-      - image: alpine:3.7
       - image: ruby:2.6.6
     working_directory: /work
     steps:
       - run:
           name: Install System Dependencies
           command: |
-            # See also https://circleci.com/docs/2.0/custom-images/#required-tools-for-primary-containers
-            apk --update --no-cache add git openssh-client tar gzip ca-certificates \
               tzdata
             gem install -N bundler
       - run:
