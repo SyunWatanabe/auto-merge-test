@@ -5,7 +5,6 @@
   "patch": { "automerge": true },
   "packageRules": [
   {
-  "depTypeList": ["devDependencies"],
   "matchPackageNames": ["zengin_code", "capifla"],
   "automerge": true
   }
