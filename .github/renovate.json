@@ -7,7 +7,7 @@
   ],
   "packageRules": [
     {
-      "matchPackageNames": ["capifla"]
+      "matchPackageNames": ["zengin_code", "capifla"]
     }
   ],
   "lockFileMaintenance": {
