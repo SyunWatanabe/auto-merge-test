@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "baseBranches": [
+    "master"
+  ],
+  "packageRules": [
+    {
+      "matchPackageNames": ["zengin", "capifla"]
+    }
+  ],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true
+  }
+}
