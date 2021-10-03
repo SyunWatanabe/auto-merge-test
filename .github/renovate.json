@@ -10,6 +10,7 @@
     {
       "managers": ["bundler"],
       "matchPackageNames": ["zengin_code", "capifla"],
+      "rangeStrategy": "bump",
       "enabled": true
     }
   ]
