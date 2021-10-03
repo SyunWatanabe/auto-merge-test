@@ -3,11 +3,6 @@
   "packageRules": [
     {
       "managers": ["bundler"],
-      "matchPackagePatterns": [".*"],
-      "enabled": false
-    },
-    {
-      "managers": ["bundler"],
       "matchPackageNames": ["zengin_code", "capifla"],
       "rangeStrategy": "bump",
       "enabled": true
