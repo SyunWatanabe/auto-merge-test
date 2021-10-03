@@ -1,12 +1,21 @@
+// {
+//   "timezone": "Asia/Tokyo",
+//   "schedule": ["every weekend"],
+//   "labels": ["renovate"],
+//   "patch": { "automerge": true },
+//   "packageRules": [
+//   {
+//   "matchPackageNames": ["zengin_code", "capifla"],
+//   "automerge": true
+//   }
+//   ]
+// }
+
 {
-  "timezone": "Asia/Tokyo",
-  "schedule": ["every weekend"],
-  "labels": ["renovate"],
-  "patch": { "automerge": true },
   "packageRules": [
-  {
-  "matchPackageNames": ["zengin_code", "capifla"],
-  "automerge": true
-  }
+    {
+      "matchPackageNames": ["capifla","zengin_code"],
+      "rangeStrategy": "pin"
+    }
   ]
 }
