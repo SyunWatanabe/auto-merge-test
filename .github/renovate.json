@@ -7,7 +7,6 @@
   "packageRules": [
     {
       "matchPackageNames": ["zengin_code", "capifla"],
-      "automerge": true
     }
   ]
 }
