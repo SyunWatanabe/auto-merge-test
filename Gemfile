@@ -31,6 +31,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'zengin_code', '> 0'
 gem 'capifla', '> 0'
 gem 'circleci-bundle-update-pr'
+gem 'aws-sdk', '> 0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

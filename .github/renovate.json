@@ -9,7 +9,7 @@
     },
     {
       "managers": ["bundler"],
-      "matchPackageNames": ["zengin_code", "capifla"],
+      "matchPackageNames": ["zengin_code", "capifla", "aws-sdk"],
       "rangeStrategy": "bump",
       "enabled": true
     }
