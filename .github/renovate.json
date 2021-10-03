@@ -6,7 +6,7 @@
   },
   "packageRules": [
     {
-      "matchPackagePatterns": ["capifla", "zengin_code"],
+      "matchPackageNames": ["capifla", "zengin_code"],
       "excludePackagePatterns": [".*"]
     }
   ]
