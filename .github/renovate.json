@@ -6,7 +6,9 @@
   "patch": { "automerge": true },
   "packageRules": [
     {
-      "matchPackageNames": ["zengin_code", "capifla"]
+      "matchPackageNames": ["capifla", "zengin_code"],
+      "excludePackagePatterns": [".*"],
+      "automerge": true
     }
   ]
 }
