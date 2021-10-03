@@ -1,4 +1,9 @@
 {
+  "extends": ["config:base"],
+  "baseBranches": ["master"],
+  "lockFileMaintenance": {
+    "enabled": true
+  },
   "packageRules": [
     {
       "matchPackagePatterns": ["capifla", "zengin_code"],
