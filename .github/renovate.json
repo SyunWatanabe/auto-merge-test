@@ -1,8 +1,8 @@
 {
   "packageRules": [
     {
-      "matchPackageNames": ["capifla","zengin_code"],
-      "rangeStrategy": "pin"
+      "excludePackagePatterns": ["*"],
+      "matchPackageNames": ["capifla","zengin_code"]
     }
   ]
 }
