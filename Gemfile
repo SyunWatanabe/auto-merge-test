@@ -29,7 +29,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'zengin_code', '> 1.0.1.20210920'
-gem 'capifla', '> 0'
+gem 'capifla', '> 0.1'
 gem 'circleci-bundle-update-pr'
 
 group :development, :test do

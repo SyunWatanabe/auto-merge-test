@@ -232,7 +232,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.4.2)
-    zengin_code (1.0.1.20210920)
+    zengin_code (1.0.1.20210927)
 
 PLATFORMS
   ruby
@@ -240,7 +240,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
-  capifla (> 0)
+  capifla (> 0.1)
   capybara (>= 3.26)
   circleci-bundle-update-pr
   jbuilder (~> 2.7)
@@ -257,7 +257,7 @@ DEPENDENCIES
   web-console (>= 4.1.0)
   webdrivers
   webpacker (~> 5.0)
-  zengin_code (= 1.0.1.20210920)
+  zengin_code (> 1.0.1.20210920)
 
 RUBY VERSION
    ruby 2.6.6p146
