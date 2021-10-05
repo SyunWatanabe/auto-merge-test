@@ -210,7 +210,7 @@ GEM
     aws-sdk-codeartifact (1.13.0)
       aws-sdk-core (~> 3, >= 3.120.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-codebuild (1.81.0)
+    aws-sdk-codebuild (1.82.0)
       aws-sdk-core (~> 3, >= 3.120.0)
       aws-sigv4 (~> 1.1)
     aws-sdk-codecommit (1.45.0)
@@ -344,7 +344,7 @@ GEM
     aws-sdk-ecs (1.85.0)
       aws-sdk-core (~> 3, >= 3.120.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-efs (1.44.0)
+    aws-sdk-efs (1.45.0)
       aws-sdk-core (~> 3, >= 3.120.0)
       aws-sigv4 (~> 1.1)
     aws-sdk-eks (1.63.0)
@@ -533,7 +533,7 @@ GEM
     aws-sdk-kinesisvideosignalingchannels (1.13.0)
       aws-sdk-core (~> 3, >= 3.120.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-kms (1.48.0)
+    aws-sdk-kms (1.49.0)
       aws-sdk-core (~> 3, >= 3.120.0)
       aws-sigv4 (~> 1.1)
     aws-sdk-lakeformation (1.17.0)
@@ -1385,7 +1385,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aws-sdk (> 0)
+  aws-sdk (> 1.66.0)
   bootsnap (>= 1.4.4)
   byebug
   capifla (> 0.10.0)
