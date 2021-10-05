@@ -3,8 +3,7 @@
     ":ignoreModulesAndTests",
     ":label(renovate)",
     ":prConcurrentLimit10",
-    ":prNotPending",
-    ":timezone(Asia/Tokyo)"
+    ":prNotPending"
   ],
   "ignorePaths": ["package.json", ".ruby-version"],
   "packageRules": [
