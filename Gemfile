@@ -29,7 +29,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'zengin_code', '> 0'
-gem 'capifla', '> 0.6.0'
+gem 'capifla', '> 0.7.0'
 gem 'circleci-bundle-update-pr'
 gem 'aws-sdk', '> 0'
 
