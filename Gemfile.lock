@@ -1405,7 +1405,7 @@ DEPENDENCIES
   web-console (>= 4.1.0)
   webdrivers
   webpacker (~> 5.0)
-  zengin_code (> 0.0.4.20151216)
+  zengin_code (> 1.0.1.20211003)
 
 RUBY VERSION
    ruby 2.6.6p146
