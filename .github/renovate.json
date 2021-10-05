@@ -9,12 +9,12 @@
   "ignorePaths": ["package.json", ".ruby-version"],
   "packageRules": [
     {
-      "enabledManagers": ["bundler"],
+      "managers": ["bundler"],
       "matchPackagePatterns": [".*"],
       "enabled": false
     },
     {
-      "enabledManagers": ["bundler"],
+      "managers": ["bundler"],
       "matchPackageNames": ["zengin_code", "capifla", "aws-sdk"],
       "rangeStrategy": "bump",
       "enabled": true,
