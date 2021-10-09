@@ -1388,7 +1388,7 @@ DEPENDENCIES
   aws-sdk (> 3.0.0)
   bootsnap (>= 1.4.4)
   byebug
-  capifla (> 0.14.0)
+  capifla (> 0.0.0)
   capybara (>= 3.26)
   circleci-bundle-update-pr
   jbuilder (~> 2.7)
