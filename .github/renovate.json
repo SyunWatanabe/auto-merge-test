@@ -1,4 +1,9 @@
 {
+  "extends": [
+    ":ignoreModulesAndTests",
+    ":label(renovate)",
+    ":prConcurrentLimit10",
+  ],
   "ignorePaths": ["package.json", ".ruby-version"],
   "packageRules": [
     {
