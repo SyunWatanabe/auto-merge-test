@@ -22,10 +22,15 @@ jobs:
       - run:
           name: deploy
           command: |
-            echo 'start AWS CLI test'
-            aws --version
-            aws s3 ls
-
+            COMMIT_MESSAGE=$(git log -1 HEAD --pretty=format:%s)
+            TRIGGER_MATCH_PATTERN="^Update dependency capifla to.*$"
+            echo COMMIT_MESSAGE
+            if [[ ${COMMIT_MESSAGE} =~ ${TRIGGER_MATCH_PATTERN} ]]; then
+              echo "execute auto deploy"
+            else
+              echo "stop auto deploy"
+              circleci-agent step halt
+            fi
 
 workflows:
   build:
