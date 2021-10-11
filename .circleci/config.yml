@@ -11,8 +11,7 @@ jobs:
       - run:
           name: The First Step
           command: |
-            echo 'Hello World!'
-            echo 'This is the delivery pipeline'
+            git log -1 --oneline
 
   aws-cli-example:
     executor: aws-cli/default
@@ -32,4 +31,4 @@ workflows:
   build:
     jobs:
       - build
-      - aws-cli-example
+      # - aws-cli-example
