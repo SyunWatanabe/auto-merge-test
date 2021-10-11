@@ -38,14 +38,13 @@ jobs:
             aws --version
             aws s3 ls
 
-
 workflows:
   build-test-deploy:
     jobs:
       - build
       - aws-cli-example:
-        requires:
-          - build
-      filters:
-        branches:
-          only: master
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
