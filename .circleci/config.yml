@@ -40,9 +40,10 @@ jobs:
 
 
 workflows:
-  jobs:
-    - build
-    - aws-cli-example:
+  build-test-deploy:
+    jobs:
+      - build
+      - aws-cli-example:
         requires:
           - build
       filters:
