@@ -24,7 +24,7 @@ jobs:
           command: |
             COMMIT_MESSAGE=$(git log -1 HEAD --pretty=format:%s)
             TRIGGER_MATCH_PATTERN="^Update dependency capifla to.*$"
-            echo COMMIT_MESSAGE
+            echo $(git log -1 HEAD --pretty=format:%s)
             if [[ ${COMMIT_MESSAGE} =~ ${TRIGGER_MATCH_PATTERN} ]]; then
               echo "execute auto deploy"
             else
