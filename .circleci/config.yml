@@ -13,49 +13,22 @@ jobs:
           command: |
             echo 'Hello World!'
             echo 'This is the delivery pipeline'
-  continuous_bundle_update:
-    docker:
-      - image: ruby:2.6.6
-    working_directory: /work
+
+  aws-cli-example:
+    executor: aws-cli/default
     steps:
-      - run:
-          name: Install System Dependencies
-          command: |
-            gem install -N bundler
-      - run:
-          name: Set timezone to Asia/Tokyo
-          command: cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
       - checkout
-      - restore_cache:
-          name: Restore bundler cache
-          keys:
-            - gems-{{ .Environment.COMMON_CACHE_KEY }}-{{ checksum "Gemfile.lock" }}
-            - gems-{{ .Environment.COMMON_CACHE_KEY }}-
+      - aws-cli/setup:
+          profile-name: example
       - run:
-          name: Setup requirements for continuous bundle update
-          command: gem install -N circleci-bundle-update-pr
-      - deploy:
-          name: Continuous bundle update
-          command: circleci-bundle-update-pr ${GIT_USER_NAME} ${GIT_USER_EMAIL}
-
-
-  jobs:
-    aws-cli-example:
-      executor: aws-cli/default
-      steps:
-        - checkout
-        - aws-cli/setup:
-            profile-name: example
-        - run:
-            name: deploy
-            command: |
-              echo 'start AWS CLI test'
-              aws --version
-              aws s3 ls
+          name: deploy
+          command: |
+            echo 'start AWS CLI test'
+            aws --version
+            aws s3 ls
 
 
 workflows:
-  version: 2
   build:
     jobs:
       - build
