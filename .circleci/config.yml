@@ -43,6 +43,8 @@ workflows:
   jobs:
     - build
     - aws-cli-example:
+        requires:
+          - build
       filters:
         branches:
           only: master
