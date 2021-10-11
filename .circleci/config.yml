@@ -11,7 +11,7 @@ jobs:
       - run:
           name: The First Step
           command: |
-            echo "start CI"
+            echo "ci start"
 
   aws-cli-example:
     executor: aws-cli/default
@@ -20,24 +20,29 @@ jobs:
       - aws-cli/setup:
           profile-name: example
       - run:
-          name: deploy
+          name: check-auto-deploy
           command: |
             COMMIT_MESSAGE=$(git log -1 HEAD --pretty=format:%s)
             TRIGGER_MATCH_PATTERN="^Update dependency capifla to.*$"
-            echo $(git log -1 HEAD --pretty=format:%s)
+            echo COMMIT_MESSAGE
             if [[ ${COMMIT_MESSAGE} =~ ${TRIGGER_MATCH_PATTERN} ]]; then
               echo "execute auto deploy"
             else
               echo "stop auto deploy"
               circleci-agent step halt
             fi
+      - run:
+          name: create-ami-and-scaling
+          command: |
+            echo 'start AWS CLI test'
+            aws --version
+            aws s3 ls
+
 
 workflows:
-  build:
-    jobs:
-      - build
-      - aws-cli-example:
-        filters:
-          branches:
-            only:
-              - master
+  jobs:
+    - build
+    - aws-cli-example:
+      filters:
+        branches:
+          only: master
