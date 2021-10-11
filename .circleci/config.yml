@@ -31,4 +31,8 @@ workflows:
   build:
     jobs:
       - build
-      # - aws-cli-example
+      - aws-cli-example
+      filters:
+        branches:
+          only:
+            - master
