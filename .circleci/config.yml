@@ -1,4 +1,8 @@
-version: 2
+version: 2.1
+
+orbs:
+  aws-cli: circleci/aws-cli@2.0
+
 jobs:
   build:
     docker:
@@ -7,44 +11,40 @@ jobs:
       - run:
           name: The First Step
           command: |
-            echo 'Hello World!'
-            echo 'This is the delivery pipeline'
-  continuous_bundle_update:
-    docker:
-      - image: ruby:2.6.6
-    working_directory: /work
+            echo "ci start"
+
+  aws-cli-example:
+    executor: aws-cli/default
     steps:
-      - run:
-          name: Install System Dependencies
-          command: |
-            gem install -N bundler
-      - run:
-          name: Set timezone to Asia/Tokyo
-          command: cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
       - checkout
-      - restore_cache:
-          name: Restore bundler cache
-          keys:
-            - gems-{{ .Environment.COMMON_CACHE_KEY }}-{{ checksum "Gemfile.lock" }}
-            - gems-{{ .Environment.COMMON_CACHE_KEY }}-
+      - aws-cli/setup:
+          profile-name: example
       - run:
-          name: Setup requirements for continuous bundle update
-          command: gem install -N circleci-bundle-update-pr
-      - deploy:
-          name: Continuous bundle update
-          command: circleci-bundle-update-pr ${GIT_USER_NAME} ${GIT_USER_EMAIL}
+          name: check-auto-deploy
+          command: |
+            COMMIT_MESSAGE=$(git log -1 HEAD --pretty=format:%s)
+            TRIGGER_MATCH_PATTERN="^Update dependency capifla to.*$"
+            echo COMMIT_MESSAGE
+            if [[ ${COMMIT_MESSAGE} =~ ${TRIGGER_MATCH_PATTERN} ]]; then
+              echo "execute auto deploy"
+            else
+              echo "stop auto deploy"
+              circleci-agent step halt
+            fi
+      - run:
+          name: create-ami-and-scaling
+          command: |
+            echo 'start AWS CLI test'
+            aws --version
+            aws s3 ls
 
 workflows:
-  version: 2
-  build:
+  build-test-deploy:
     jobs:
       - build
-  # nightly:
-  #   triggers:
-  #     - schedule:
-  #         cron: "0,50, * * * *"
-  #         filters:
-  #           branches:
-  #             only: master
-  #   jobs:
-  #     - continuous_bundle_update
+      - aws-cli-example:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
