@@ -18,12 +18,13 @@ jobs:
     steps:
       - checkout
       - aws-cli/setup:
-          profile-name: example
+          aws-access-key-id: $AWSCLI_ACCESS_KEY_ID
+          aws-secret-access-key: $AWSCLI_SECRET_ACCESS_KEY
       - run:
           name: check-auto-deploy
           command: |
             COMMIT_MESSAGE=$(git log -1 HEAD --pretty=format:%s)
-            TRIGGER_MATCH_PATTERN="^Update dependency capifla to.*$"
+            TRIGGER_MATCH_PATTERN="^citest.*$"
             echo $(git log -1 HEAD --pretty=format:%s)
             if [[ ${COMMIT_MESSAGE} =~ ${TRIGGER_MATCH_PATTERN} ]]; then
               echo "execute auto deploy"
