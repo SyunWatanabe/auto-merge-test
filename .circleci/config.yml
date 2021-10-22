@@ -18,7 +18,7 @@ jobs:
     steps:
       - checkout
       - aws-cli/setup:
-          aws-access-key-id: AWSCLI_ACCESS_KEY_ID
+          aws-access-key-id: AWSCLI_SECRET_ACCESS_KEY
           aws-secret-access-key: AWSCLI_SECRET_ACCESS_KEY
       - run:
           name: check-auto-deploy
