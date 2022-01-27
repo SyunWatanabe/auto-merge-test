@@ -1,4 +1,5 @@
 {
+  "ignoreTests": true,
   "ignorePaths": ["package.json", ".ruby-version", ".circleci/config.yml"],
   "packageRules": [
     {
