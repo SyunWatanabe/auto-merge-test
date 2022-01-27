@@ -1,43 +1,43 @@
-version: 2.1
+# version: 2.1
 
-orbs:
-  aws-cli: circleci/aws-cli@2.0.3
+# orbs:
+#   aws-cli: circleci/aws-cli@2.0.3
 
-jobs:
-  build:
-    docker:
-      - image: alpine:3.7
-    steps:
-      - run:
-          name: The First Step
-          command: |
-            echo "ci start"
+# jobs:
+#   build:
+#     docker:
+#       - image: alpine:3.7
+#     steps:
+#       - run:
+#           name: The First Step
+#           command: |
+#             echo "ci start"
 
-  aws-cli-example:
-    executor: aws-cli/default
-    steps:
-      - checkout
-      - aws-cli/setup:
-          aws-access-key-id: AWSCLI_ACCESS_KEY_ID
-          aws-secret-access-key: AWSCLI_SECRET_ACCESS_KEY
-      - run:
-          name: check-auto-deploy
-          command: |
-            COMMIT_MESSAGE=$(git log -1 HEAD --pretty=format:%s)
-            TRIGGER_MATCH_PATTERN="^citest.*$"
-            echo $(git log -1 HEAD --pretty=format:%s)
-            if [[ ${COMMIT_MESSAGE} =~ ${TRIGGER_MATCH_PATTERN} ]]; then
-              echo "execute auto deploy"
-            else
-              echo "stop auto deploy"
-              circleci-agent step halt
-            fi
-      - run:
-          name: create-ami-and-scaling
-          command: |
-            echo 'start AWS CLI test'
-            aws --version
-            aws s3 ls
+#   aws-cli-example:
+#     executor: aws-cli/default
+#     steps:
+#       - checkout
+#       - aws-cli/setup:
+#           aws-access-key-id: AWSCLI_ACCESS_KEY_ID
+#           aws-secret-access-key: AWSCLI_SECRET_ACCESS_KEY
+#       - run:
+#           name: check-auto-deploy
+#           command: |
+#             COMMIT_MESSAGE=$(git log -1 HEAD --pretty=format:%s)
+#             TRIGGER_MATCH_PATTERN="^citest.*$"
+#             echo $(git log -1 HEAD --pretty=format:%s)
+#             if [[ ${COMMIT_MESSAGE} =~ ${TRIGGER_MATCH_PATTERN} ]]; then
+#               echo "execute auto deploy"
+#             else
+#               echo "stop auto deploy"
+#               circleci-agent step halt
+#             fi
+#       - run:
+#           name: create-ami-and-scaling
+#           command: |
+#             echo 'start AWS CLI test'
+#             aws --version
+#             aws s3 ls
 
 # workflows:
 #   build-test-deploy:
