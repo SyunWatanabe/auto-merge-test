@@ -28,7 +28,7 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
-gem 'zengin_code', '> 1.0.1.20220403'
+gem 'zengin_code', '> 1.0.1.20220404'
 gem 'capifla', '> 2.2.0'
 gem 'circleci-bundle-update-pr'
 gem 'aws-sdk', '> 3.0.0'
