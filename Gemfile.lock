@@ -1379,7 +1379,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.4.2)
-    zengin_code (1.0.1.20230309)
+    zengin_code (1.0.1.20230404)
 
 PLATFORMS
   ruby
@@ -1405,7 +1405,7 @@ DEPENDENCIES
   web-console (>= 4.1.0)
   webdrivers
   webpacker (~> 5.0)
-  zengin_code (> 1.0.1.20230308)
+  zengin_code (> 1.0.1.20230403)
 
 RUBY VERSION
    ruby 2.6.6p146
